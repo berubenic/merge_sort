@@ -6,38 +6,37 @@ def merge_sort(arr)
     right = arr[arr.length / 2..-1]
     merge_sort(left)
     merge_sort(right)
-    merge(left, right)
+    merge(left, right, arr)
   end
 end
 
-def merge(left, right)
-  result = []
+def merge(left, right, arr)
   i = 0
   j = 0
   k = 0
 
   while i < left.length && j < right.length
     if left[i] < right[j]
-      result[k] = left[i]
+      arr[k] = left[i]
       k += 1
       i += 1
     else
-      result[k] = right[j]
+      arr[k] = right[j]
       k += 1
       j += 1
     end
   end
   until i == left.length
-    result[k] = left[i]
+    arr[k] = left[i]
     k += 1
     i += 1
   end
   until j == right.length
-    result[k] = right[j]
+    arr[k] = right[j]
     k += 1
     j += 1
   end
+  p arr
 end
 
-p merge_sort([5, 7, 9, 2, 6, 3, 5, 5])
-p merge([2, 4, 7], [1, 2, 4])
+p merge_sort([3, 9, 7, 4, 2, 8, 10])
